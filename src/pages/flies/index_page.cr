@@ -1,12 +1,13 @@
 class Flies::IndexPage < MainLayout
-  needs fly_names : Array(String)
+  needs flies : FlyQuery
 
   def inner
     h1 "Flies"
 
     ul class: "flies-list" do
-      @fly_names.each do |fly|
-        li fly, class: "fly-name"
+      @flies.each do |fly|
+        li fly.name, class: "fly-name"
+        li fly.description, class: "fly-description"
       end
     end
   end
